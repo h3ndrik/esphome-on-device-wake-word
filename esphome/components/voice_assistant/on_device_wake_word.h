@@ -40,8 +40,8 @@ enum {
 
 // Increasing either of these will reduce the rate of false acceptances while increasing the false rejection rate
 // IMPLEMENTATION DETAILS: These should be exposed to the user for modification. It would also be nice if we could set defaults specific to each model
-static constexpr float STREAMING_MODEL_PROBABILITY_CUTOFF = 0.5;
-static constexpr size_t STREAMING_MODEL_SLIDING_WINDOW_MEAN_LENGTH = 10;
+static constexpr float STREAMING_MODEL_PROBABILITY_CUTOFF = 0.4;
+static constexpr size_t STREAMING_MODEL_SLIDING_WINDOW_MEAN_LENGTH = 8;
 
 class OnDeviceWakeWord {
  public:
