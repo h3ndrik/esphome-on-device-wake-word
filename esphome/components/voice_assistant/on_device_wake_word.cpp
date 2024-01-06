@@ -148,7 +148,7 @@ float OnDeviceWakeWord::perform_streaming_inference_() {
     return false;
   }
 
-  ESP_LOGD(TAG_LOCAL, "Streaming Inference Latency=%u ms", (millis() - prior_invoke));
+  ESP_LOGV(TAG_LOCAL, "Streaming Inference Latency=%u ms", (millis() - prior_invoke));
 
   TfLiteTensor *output = this->streaming_interpreter_->output(0);
 
