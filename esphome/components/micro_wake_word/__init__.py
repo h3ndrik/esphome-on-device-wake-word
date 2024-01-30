@@ -258,18 +258,27 @@ async def to_code(config):
             on_wake_word_detection_config,
         )
 
-    esp32.add_idf_component(
-        name="esp-tflite-micro",
-        repo="https://github.com/espressif/esp-tflite-micro",
-        # path="components",
-        # components=["esp-radar"],
-    )
-    # esp32.add_idf_component(
-    #     name="esp-nn",
-    #     repo="https://github.com/espressif/esp-nn",
-    #     # path="components",
-    #     # components=["esp-radar"],
-    # )
+    if CORE.using_esp_idf:
+        esp32.add_idf_component(
+            name="esp-tflite-micro",
+            repo="https://github.com/espressif/esp-tflite-micro",
+            # path="components",
+            # components=["esp-radar"],
+        )
+        # esp32.add_idf_component(
+        #     name="esp-nn",
+        #     repo="https://github.com/espressif/esp-nn",
+        #     # path="components",
+        #     # components=["esp-radar"],
+        # )
+
+    if CORE.using_arduino:
+        #cg.add_library("nickjgniklu/ESP_TF", "1.0.0")
+        cg.add_library(
+                name = "ESP_TF",
+                repository="https://github.com/h3ndrik/ESP_TF.git#main",
+                version="42a5b40a8de67b9486f19b594bc21092583bf653"
+            )
 
     cg.add_build_flag("-DTF_LITE_STATIC_MEMORY")
     cg.add_build_flag("-DTF_LITE_DISABLE_X86_NEON")
